@@ -63,4 +63,14 @@ public class User {
     public byte getAge() {
         return age;
     }
+
+    @Override
+    public String toString() {
+        return "\nUser{" +
+                "id=" + id +
+                ", name='" + name +
+                "', lastName='" + lastName +
+                "', age=" + age +
+                "}";
+    }
 }

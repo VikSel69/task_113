@@ -1,26 +1,24 @@
 package jm.task.core.jdbc;
 
-import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserServiceImpl;
 import java.sql.SQLException;
-import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-        String testName = "Ivan";
-        String testLastName = "Ivanov";
-        byte testAge = 5;
+        String[] name = {"Ivan", "Petr", "Sergei", "Bob"};
+        String[] lastName = {"Ivanov", "Petrov", "Sergeev", "Bobov"};
+        byte[] age = {15, 18, 25, 20};
 
-        UserServiceImpl table = new UserServiceImpl();
+        UserServiceImpl userService = new UserServiceImpl();
 
-        table.dropUsersTable();
-        table.createUsersTable();
-        table.saveUser(testName, testLastName, testAge);
-
-        List<User> userList = table.getAllUsers();
-        System.out.println(userList.get(0).getName());
-        System.out.println(userList.get(0).getLastName());
-        System.out.println(userList.get(0).getAge());
+        userService.createUsersTable();
+        for (int i = 0; i < 4; i++) {
+            userService.saveUser(name[i], lastName[i], age[i]);
+            System.out.printf("User с именем – %s добавлен в базу данных\n", name[i]);
+        }
+        System.out.println(userService.getAllUsers().toString());
+        userService.cleanUsersTable();
+        userService.dropUsersTable();
     }
 }
