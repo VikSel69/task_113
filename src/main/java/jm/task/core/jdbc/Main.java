@@ -1,11 +1,10 @@
 package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.service.UserServiceImpl;
-import java.sql.SQLException;
 
 public class Main {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
         String[] name = {"Ivan", "Petr", "Sergei", "Bob"};
         String[] lastName = {"Ivanov", "Petrov", "Sergeev", "Bobov"};
         byte[] age = {15, 18, 25, 20};
